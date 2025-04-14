@@ -1,0 +1,75 @@
+int position=0;
+int deplacement=0;
+
+void setup() {
+  walk();
+  jump(); 
+  jump();
+  jump();
+  println (position);
+  println (deplacement);
+  println ((float)position/deplacement);
+}
+
+void walk(){
+position=position +1;
+deplacement=deplacement+1;
+}
+
+void jump(){
+position=position +2;
+deplacement=deplacement+1;
+}
+
+void setup(){
+size(2500,1000);
+mouton(0,200);
+mouton(800,200);
+}
+
+
+void mouton(int x,int y){
+fill(#333333);
+rect(x+250,y+390,80,160);
+rect (x+340,y+390,80,160);
+rect (x+550,y+390,80,160);
+rect (x+640,y+390,80,160);
+rect (x+740,y+240,200,200);
+fill(255);
+rect(x+250,y+250,480,140);
+rect (x+880,y+320,50,50);
+}
+
+}
+
+2.2
+float calculePrix(int nombreDeBillets){
+return nombreDeBillets*10.5;
+}
+void setup(){
+calculePrix(4);
+println("prix 4 personnes: "+calculePrix (4));
+calculePrix(9);
+println("prix 9 personnes: "+calculePrix (9));
+}
+
+2.3
+
+float prixbillet=10.5;
+float prixreduc=9;
+
+float calculePrix(int nombreDeBillets){
+if (nombreDeBillets<5) {
+return nombreDeBillets*prixbillet;
+}
+else {
+  return nombreDeBillets*prixreduc;
+}
+}
+void setup(){
+calculePrix(4);
+println("prix 4 personnes: "+calculePrix (4));
+calculePrix(9);
+println("prix 9 personnes: "+calculePrix (9));
+}
+

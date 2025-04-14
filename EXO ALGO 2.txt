@@ -1,0 +1,52 @@
+WALK / JUMP /JUMP / JUMP
+0 1 3 5 7
+WALK / JUMP / JUMP / WALK /WALK
+0 1 3 5 6 7
+
+position=0
+walk=1 
+jump=2 
+
+position= position + walk 
+position(1)
+position= position + jump 
+position(3)
+position= position + jump
+position (5)
+position= position + jump
+position (7)
+
+2.4
+int flaquedo1=2;
+int flaquedo2=4;
+int walk=1;
+int jump=2;
+int positionToto=0;
+
+// permet de determiner si la position de toto est vraie ou fausse par rapport à la flaque d'eau
+boolean isNearWater(int positionToto){
+  if (positionToto==flaquedo1-1 || positionToto==flaquedo2-1)
+  {
+    return true;
+  }
+  else { 
+    return false;
+  }
+}
+// permet à toto d'avancer suivant si c'est vrai ou faux
+int go(boolean isNearWater){
+ if (isNearWater==true){
+   positionToto=positionToto+jump;
+ return positionToto;
+ }
+ else {
+   positionToto=positionToto+walk;
+ return positionToto;
+ }
+}
+void setup(){
+ while (positionToto<7) {
+go(isNearWater(positionToto));
+println(positionToto);
+}
+}

@@ -1,0 +1,83 @@
+3.1
+
+for (int i = 0; i< 101;i++)
+{
+  println(i);
+}
+
+int i = 0;
+while (i < 100){
+  i++;
+  println(i);
+}
+
+3.2
+
+for (int i = 0; i< 101;i= i + 2)
+{
+  println(i);
+}
+
+3.3
+
+for (int i = 1; i<=1024;i= i * 2)
+{
+  println(i);
+}
+
+3.4
+
+int n =1;
+int i=0;
+while (n<=10){
+  i=n*n;
+  println(i);
+  n++;
+}
+
+3.5
+
+int i=0;
+int n=30;
+int p=0;
+while ( p < n) {   
+      p = i*i;
+      i++;
+      println(p);
+}
+3.6
+
+int i=0;
+int n=63;
+int p=0;
+while ( i*i< n) {   
+      p = i*i;
+      i++;
+      println(p);
+}
+
+3.7
+
+int i = 0;
+int somme=0;
+while (i < 100){
+   i++;
+   somme=somme+i;
+  println(somme);
+}
+
+3.8
+
+int n=14;
+
+while (n!=1){
+  if (n%2==0){
+   n=n/2;
+  }
+  else {
+  n=n*3+1;
+  }  
+  println(n);
+}
+
+

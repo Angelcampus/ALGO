@@ -1,0 +1,112 @@
+DEMINEUR 1D
+boolean[] board = new boolean [10];
+void setup() {
+   initboard(board);
+  for (int i = 0; i < board.length; i++) {
+    if (board[i] == true) {
+      println("X"); 
+    }
+    else{
+    println(getMines(i));
+    }
+  }
+}
+void initboard(boolean[] board) {
+  // Initialise toutes les cases à false
+  for (int i = 0; i < board.length; i++) {
+    board[i] = false;
+  }
+  // rajoute une mine jusqu'a 3 aléatoirement
+  int mines = 0;
+
+  while (mines <3) {
+    int index = int(random(board.length));
+    //! inverse la condition pour verifier que c'est une mine fausse qui passe à true
+    if (!board[index]) {
+      board[index] = true;
+      mines++;
+    }
+  }
+}
+// indique si la case contient une mine
+boolean isAmine (int position) {
+  if (position < board.length && board[position] == true ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// indique le nombre de mines à côté
+int getMines (int position) {
+  int minesCount = 0;  
+  // Vérifie la case avant (si l'indice est valide)
+  if (position > 0 && board[position - 1]) {
+    minesCount++;
+  }
+  // Vérifie la case après (si l'indice est valide)
+  if (position < board.length - 1 && board[position + 1]) {
+    minesCount++;
+  }
+  return minesCount;
+}
+DEMINEUR 2D
+boolean[][] board = new boolean [10][10];
+void setup() {
+  initboard(board);
+  
+  for (int i = 0; i < board.length; i++) {  // Parcours les lignes
+    for (int j = 0; j < board[i].length; j++) {  // Parcours les colonnes de chaque ligne
+      if (board[i][j]) {
+        print("X ");  
+      } else {
+        print(getMines(i, j) + " ");  
+      }
+    }
+    println();  // Passe à la ligne après chaque ligne du tableau
+  }
+}
+
+void initboard(boolean[][] board) {
+   // Initialise toutes les cases à false
+  for (int i = 0; i < board.length; i++) {
+    for (int j = 0; j < board[i].length; j++) {
+      board[i][j] = false;
+    }
+  }
+  
+  // Rajoute 3 mines aléatoire
+  int mines = 0;
+  while (mines < 3) {
+    int row = int(random(board.length)); 
+    int col = int(random(board[row].length));  
+    //! inverse la condition pour verifier que c'est une mine fausse qui passe à true
+    if (!board[row][col]) {
+      board[row][col] = true;
+      mines++;
+    }
+  }
+}
+
+// Indique le nombre de mines à côté d'une case
+int getMines(int row, int col) {
+  int minesCount = 0; 
+  // Vérifie les cases adjacentes autour de la case (row, col)
+  // Case à gauche
+  if (col > 0 && board[row][col - 1]) {
+    minesCount++;
+  }
+  // Case à droite
+  if (col < board[row].length - 1 && board[row][col + 1]) {
+    minesCount++;
+  }
+  // Case au-dessus
+  if (row > 0 && board[row - 1][col]) {
+    minesCount++;
+  }
+  // Case en-dessous
+  if (row < board.length - 1 && board[row + 1][col]) {
+    minesCount++;
+  }
+  
+  return minesCount;
+}

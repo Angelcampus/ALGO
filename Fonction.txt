@@ -1,0 +1,19 @@
+int[] board = { 7, 2, 9, 10, 1, -4 };
+
+
+void setup(){
+ float resultat= getmean();
+  println(resultat);
+}
+int getSum (){
+  int somme =0 ;
+ for(int i=0;i<board.length;i++)  {
+  somme = somme + board[i];}
+return somme;
+}
+float getmean () {
+  float moyenne=0;
+  int somme=getSum();
+   moyenne=(float)somme/board.length;
+   return moyenne;
+}

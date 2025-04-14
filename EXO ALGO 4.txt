@@ -1,0 +1,169 @@
+4.1
+int[] board = {7, 2, 9, 10, 1, -4 };
+
+
+void setup() {
+// creation du return max avec la fonction afin d'afficher le résultat
+  int max = getmax(board);
+  println(max);
+}
+
+//fonction qui permet de trouver la valeur la plus grand, board.lenght permet de verifiter tous le tableau
+int getmax(int[] board) {
+  int max = board[0];
+  for (int i=0; i<board.length; i++) {
+    if (board[i]>max) 
+    {
+// permet de changer de valeur si plus grand
+      max=board[i];
+    }  
+  }
+// rappel la fonction max pour pouvoir la print
+  return max;
+}
+
+4.1.1
+int[] board = { 7, 2, 9, 10, 1, -4 };
+
+
+void setup(){
+  int somme=getSum(board);
+  println(somme);
+}
+
+int getSum (int[] board){
+  int somme =0 ;
+ for(int i=0;i<board.length;i++)  {
+  somme = somme + board[i];}
+return somme;
+}
+4.1.2
+
+int[] board = { 7, 2, 9, 10, 1, -4 };
+float moyenne=0;
+
+void setup(){
+  int somme=getSum(board);
+  moyenne=(float)somme/board.length;
+  println(moyenne);
+}
+
+int getSum (int[] board){
+  int somme =0 ;
+ for(int i=0;i<board.length;i++)  {
+  somme = somme + board[i];}
+return somme;
+}
+
+
+AVEC GETMEAN
+
+int[] board = { 7, 2, 9, 10, 1, -4 };
+
+
+void setup(){
+ float resultat= getmean();
+  println(resultat);
+}
+int getSum (int[] board){
+  int somme =0 ;
+ for(int i=0;i<board.length;i++)  {
+  somme = somme + board[i];}
+return somme;
+}
+float getmean () {
+  float moyenne=0;
+  int somme=getSum(board);
+   moyenne=(float)somme/board.length;
+   return moyenne;
+}
+4.2
+
+int walk = 1;
+int jump = 2;
+int positionToto = 0;
+boolean[] chemin = new boolean [20];
+
+// Determine s'il y a une flaque
+boolean isNearWater(int position) {
+  if (position < chemin.length && chemin[position] == true) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Fait avancer Toto en fonction du sol
+int go(boolean nearWater) {
+  if (nearWater) {
+    positionToto = positionToto + jump;
+  } else {
+    positionToto = positionToto + walk;
+  }
+  return positionToto;
+}
+
+void setup() {
+  for (int i = 0; i < chemin.length; i++){
+   chemin[i] = random(1) < 0.3; 
+  }
+  println("Départ : positionToto = " + positionToto);
+// bouche pour tant que la position de toto est inférieur à la taille du chemin
+  while (positionToto < chemin.length) {
+    go(isNearWater(positionToto));
+    println("Toto est à la position : " + positionToto);
+  }
+}
+
+DEMINEUR
+
+boolean[] board = new boolean [10];
+void setup() {
+   initboard(board);
+  for (int i = 0; i < board.length; i++) {
+    if (board[i] == true) {
+      println("X"); 
+    }
+    else{
+    println(getMines(i));
+    }
+  }
+}
+void initboard(boolean[] board) {
+  // Initialise toutes les cases à false
+  for (int i = 0; i < board.length; i++) {
+    board[i] = false;
+  }
+  // rajoute une mine jusqu'a 3 aléatoirement
+  int mines = 0;
+
+  while (mines <3) {
+    int index = int(random(board.length));
+    //! inverse la condition pour verifier que c'est une mine fausse qui passe à true
+    if (!board[index]) {
+      board[index] = true;
+      mines++;
+    }
+  }
+}
+// indique si la case contient une mine
+boolean isAmine (int position) {
+  if (position < board.length && board[position] == true ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// indique le nombre de mines à côté
+int getMines (int position) {
+  int minesCount = 0;  
+  // Vérifie la case avant (si l'indice est valide)
+  if (position > 0 && board[position - 1]) {
+    minesCount++;
+  }
+  // Vérifie la case après (si l'indice est valide)
+  if (position < board.length - 1 && board[position + 1]) {
+    minesCount++;
+  }
+  return minesCount;
+}
