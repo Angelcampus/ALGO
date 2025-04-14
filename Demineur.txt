@@ -1,4 +1,7 @@
 DEMINEUR 1D
+
+
+
 boolean[] board = new boolean [10];
 void setup() {
    initboard(board);
@@ -49,7 +52,16 @@ int getMines (int position) {
   }
   return minesCount;
 }
+
+
+
+
 DEMINEUR 2D
+
+
+
+
+
 boolean[][] board = new boolean [10][10];
 void setup() {
   initboard(board);
@@ -110,3 +122,101 @@ int getMines(int row, int col) {
   
   return minesCount;
 }
+
+
+
+
+Demineur graphique
+
+
+
+
+
+boolean[][] board = new boolean [10][10];
+ int tailleCellule= 50;
+void setup() {
+  initboard(board);
+  textAlign(CENTER,CENTER);
+  textSize(16);
+  size(500,500);
+}
+void draw(){
+  for (int i = 0; i < board.length; i++) {  
+    for (int j = 0; j < board[i].length; j++) { 
+      if (board[i][j]) {  
+        fill(255,0,0);
+        rect(i*tailleCellule,j*tailleCellule,tailleCellule,tailleCellule);
+        fill(0);       
+        text(" X ",i*tailleCellule+tailleCellule/2 ,j*tailleCellule+tailleCellule/2 );
+      } else { 
+        fill(255);
+        rect(i*tailleCellule,j*tailleCellule,tailleCellule,tailleCellule);
+      }
+        
+    }
+  }
+
+}
+
+void initboard(boolean[][] board) {
+   // Initialise toutes les cases à false
+  for (int i = 0; i < board.length; i++) {
+    for (int j = 0; j < board[i].length; j++) {
+      board[i][j] = false;
+    }
+  }
+  
+  // Rajoute 3 mines aléatoire
+  int mines = 0;
+  while (mines < 3) {
+    int row = int(random(board.length)); 
+    int col = int(random(board[row].length));  
+    //! inverse la condition pour verifier que c'est une mine fausse qui passe à true
+    if (!board[row][col]) {
+      board[row][col] = true;
+      mines++;
+    }
+  }
+}
+
+// Indique le nombre de mines à côté d'une case
+int getMines(int row, int col) {
+  int minesCount = 0; 
+  // Vérifie les cases adjacentes autour de la case (row, col)
+  // Case à gauche
+  if (col > 0 && board[row][col - 1]) {
+    minesCount++;
+  }
+  // Case à droite
+  if (col < board[row].length - 1 && board[row][col + 1]) {
+    minesCount++;
+  }
+  // Case au-dessus
+  if (row > 0 && board[row - 1][col]) {
+    minesCount++;
+  }
+  // Case en-dessous
+  if (row < board.length - 1 && board[row + 1][col]) {
+    minesCount++;
+  }
+   // case en haut à gauche
+  if (row > 0 && col > 0 && board[row - 1][col - 1]) {
+    minesCount++;
+  }
+  // case en haut à droite
+  if (row > 0 && col < board[row].length - 1 && board[row - 1][col + 1]) {
+    minesCount++;
+  }
+  // case en bas à gauche
+  if (row < board.length - 1 && col > 0 && board[row + 1][col - 1]) {
+    minesCount++;
+  }
+  // case en bas à droite
+  if (row < board.length - 1 && col < board[row].length - 1 && board[row + 1][col + 1]) {
+    minesCount++;
+  }
+ 
+  return minesCount;
+}
+
+
