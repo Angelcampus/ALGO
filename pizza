@@ -1,0 +1,21 @@
+int[] pizzas={13,11,8,7,5,3,0};
+ int pizzalivrer=0;
+ void setup(){
+ println("nombre pizzas :",pizzas[0]);
+for (int i=0; i<6; i++){
+  pizzalivrer=pizzas[i]-pizzas[i+1];
+  prix_livraison(pizzalivrer);
+  println("pizza livrer:",pizzalivrer);
+    println("prix livraison : ",prix_livraison(pizzalivrer),"€");
+}
+ }
+ int prix_livraison(int pizzalivrer){
+int prix=0;
+if (pizzalivrer>=3){
+prix=pizzalivrer*10;
+}
+else{
+prix=pizzalivrer*10+3;
+}
+return prix;
+}
