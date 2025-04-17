@@ -1,0 +1,51 @@
+int age_voyageur=8;
+float prix=10;
+String[] Typesdecartes= {"liberte_jeunes","liberte_adultes","carnet","autocars","solidaire","mobilite","surete","none"};
+String[] jour_semaine= { "Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
+
+void setup() {
+  prix=tarif_billet(prix);
+  println(prix);
+}
+
+String selecteur_date(){
+
+
+}
+}
+
+float tarif_billet(float tarif){
+ String carte="none";
+ 
+  if(carte=="none"){ 
+  tarif=tarif*1;
+  }
+  if (age_voyageur<=3) {
+    tarif=tarif*0;
+  }
+  if (age_voyageur<=11){
+   tarif=tarif*0.5;
+  }
+  if (carte=="liberte_jeunes" && age_voyageur>11){
+    tarif=tarif*0.5;
+  }
+    if (carte=="liberte_adultes" && age_voyageur>=26){
+    tarif=tarif*0.25;
+  }
+      if (carte=="carnet"){
+    tarif=tarif*0.20;
+  }
+      if (carte=="autocars") {
+    tarif=tarif*0.30;
+  }
+      if (carte=="solidaire"){
+    tarif=tarif*0.75;
+  }
+    if (carte=="mobilite"){
+    tarif=tarif*0.90;
+  }
+    if (carte=="surete"){
+    tarif=tarif*0.00;
+  }
+return tarif;
+}
